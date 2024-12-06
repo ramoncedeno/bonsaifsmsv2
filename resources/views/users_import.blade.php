@@ -4,7 +4,7 @@
     </div>
 @endif
 
-<form action="{{ route('users.import') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('users.import.file') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <input type="file" name="file" required>
     <button type="submit">Importar</button>
