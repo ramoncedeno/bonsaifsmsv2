@@ -26,10 +26,10 @@ class UsersController extends Controller
             ]);
 
             // Get the uploaded file.
-            $file = $request->file('file');
+            $request->file('file');
 
             // It imports the file data.
-            Excel::import(new UsersImport, $file->getRealPath());
+            Excel::import(new UsersImport, $request->file('file'));
 
             // Redirect with a successful message.
             return redirect('/users/import')->with('success', 'All good!');

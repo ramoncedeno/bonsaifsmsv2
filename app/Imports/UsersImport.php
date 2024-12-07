@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Illuminate\Support\Facades\Log;
+
 
 class UsersImport implements ToModel,WithHeadingRow,WithChunkReading,WithBatchInserts
 {
@@ -30,7 +32,7 @@ class UsersImport implements ToModel,WithHeadingRow,WithChunkReading,WithBatchIn
                 ]
             );
         } catch (\Exception $e) {
-            \log::error('Error importing user: ' . $e->getMessage());
+            Log::error('Error importing user: ' . $e->getMessage());
         }
     }
 

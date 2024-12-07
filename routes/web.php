@@ -29,3 +29,5 @@ Route::post('/send-sms/{phone}/{message}', [SmsTransactionController::class, 'se
 
 Route::get('sms/import', [SendAttemptsController::class, 'index'])->name('sms.import.view');
 Route::post('sms/import', [SendAttemptsController::class, 'import'])->name('sms.import.file');
+
+Route::get('/sms/view',[SmsController::class,'index_smsview'])->name('sms.reg.view');

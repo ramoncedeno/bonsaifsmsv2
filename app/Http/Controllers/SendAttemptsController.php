@@ -20,13 +20,13 @@ class SendAttemptsController extends Controller
             ]);
 
             // Get the uploaded file.
-            $file = $request->file('file');
+            $request->file('file');
 
             // It imports the file data.
             Excel::import(new SmsImport, $request->file('file'));
 
             // Redirect with a successful message.
-            return redirect('/sms/import')->with('success', 'All good!');
+            return redirect('/sms/view')->with('success', 'All good!');
 
         }catch (\Exception $e){
 
