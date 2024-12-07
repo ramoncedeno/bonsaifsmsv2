@@ -7,12 +7,11 @@
 <form action="{{ route('sms.import.file') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <input type="file" name="file" required>
-    <button type="submit">Importar</button>
+    <button type="submit">Import</button>
 </form>
 
-
 <div class="container my-5">
-    <!-- Barra de Paginación Superior -->
+    <!-- Upper pagination bar -->
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div>
             <span class="text-muted">
@@ -20,14 +19,14 @@
             </span>
         </div>
         <div class="btn-group" role="group">
-            <!-- Botón Página Anterior -->
+            <!-- Previous page button -->
             @if ($sendAttempts->onFirstPage())
                 <button class="btn btn-outline-secondary" disabled>{{ __('Previous') }}</button>
             @else
                 <button class="btn btn-outline-primary" onclick="window.location='{{ $sendAttempts->previousPageUrl() }}'">{{ __('Previous') }}</button>
             @endif
 
-            <!-- Botones de Números de Página -->
+            <!-- Page buttons -->
             @foreach ($sendAttempts->getUrlRange(1, $sendAttempts->lastPage()) as $page => $url)
                 @if ($page == $sendAttempts->currentPage())
                     <button class="btn btn-primary active">{{ $page }}</button>
@@ -36,7 +35,7 @@
                 @endif
             @endforeach
 
-            <!-- Botón Página Siguiente -->
+            <!-- Next page button -->
             @if ($sendAttempts->hasMorePages())
                 <button class="btn btn-outline-primary" onclick="window.location='{{ $sendAttempts->nextPageUrl() }}'">{{ __('Next') }}</button>
             @else
@@ -45,22 +44,22 @@
         </div>
     </div>
 
-        <!-- Tabla de Registros -->
+        <!-- Record table -->
     <div class="table-responsive">
         <style>
-            /* Estilos personalizados para bordes */
+            /* Personalized edges for edges */
             .table-bordered th,
             .table-bordered td {
-                border: 2px solid #dee2e6; /* Bordes más gruesos */
+                border: 2px solid #dee2e6; /* Thicker edges */
             }
 
             .table-bordered thead th {
-                background-color: #f8f9fa; /* Fondo claro para encabezados */
-                text-align: center; /* Alineación centrada en encabezados */
+                background-color: #f8f9fa; /* Clear background for headers */
+                text-align: center; /* Alignment centered on headers */
             }
 
             .table-bordered tbody tr:nth-child(odd) {
-                background-color: #fdfdfe; /* Fondo más claro para filas impares */
+                background-color: #fdfdfe; /* Lighter background for odd ranks */
             }
         </style>
         <table class="table table-striped table-hover table-bordered align-middle">
@@ -98,7 +97,7 @@
     </div>
 
 
-    <!-- Barra de Paginación Inferior -->
+    <!-- Lower paging bar -->
     <div class="d-flex justify-content-between align-items-center mt-3">
         <div>
             <span class="text-muted">
@@ -106,14 +105,14 @@
             </span>
         </div>
         <div class="btn-group" role="group">
-            <!-- Botón Página Anterior -->
+            <!-- Previous page button -->
             @if ($sendAttempts->onFirstPage())
                 <button class="btn btn-outline-secondary" disabled>{{ __('Previous') }}</button>
             @else
                 <button class="btn btn-outline-primary" onclick="window.location='{{ $sendAttempts->previousPageUrl() }}'">{{ __('Previous') }}</button>
             @endif
 
-            <!-- Botones de Números de Página -->
+            <!-- Page buttons -->
             @foreach ($sendAttempts->getUrlRange(1, $sendAttempts->lastPage()) as $page => $url)
                 @if ($page == $sendAttempts->currentPage())
                     <button class="btn btn-primary active">{{ $page }}</button>
@@ -122,7 +121,7 @@
                 @endif
             @endforeach
 
-            <!-- Botón Página Siguiente -->
+            <!-- Next page button -->
             @if ($sendAttempts->hasMorePages())
                 <button class="btn btn-outline-primary" onclick="window.location='{{ $sendAttempts->nextPageUrl() }}'">{{ __('Next') }}</button>
             @else
