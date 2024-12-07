@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SendAttemptsController;
 use App\Http\Controllers\SmsController;
 use App\Http\Controllers\SmsTransactionController;
 use App\Http\Controllers\UsersController;
@@ -25,3 +26,6 @@ Route::post('users/import', [UsersController::class, 'import'])->name('users.imp
 Route::get('sms/individual', [SmsController::class, 'indexIndividualSMS'])->name('sms.individual.view');
 Route::get('/send-sms/{phone}/{message}', [SmsTransactionController::class, 'sendSMS'])->name('sms.send.params');
 Route::post('/send-sms/{phone}/{message}', [SmsTransactionController::class, 'sendSMS'])->name('sms.send.params');
+
+Route::get('sms/import', [SendAttemptsController::class, 'index'])->name('sms.import.view');
+Route::post('sms/import', [SendAttemptsController::class, 'import'])->name('sms.import.file');

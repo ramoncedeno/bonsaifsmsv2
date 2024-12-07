@@ -2,14 +2,13 @@
 
 namespace App\Imports;
 
-use App\Models\User;
+use App\Models\SendAttempts;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class UsersImport implements ToModel,WithHeadingRow,WithChunkReading,WithBatchInserts
+class SmsImport implements ToModel,WithHeadingRow,WithChunkReading,WithBatchInserts
 {
     /**
     * @param array $row
@@ -18,21 +17,17 @@ class UsersImport implements ToModel,WithHeadingRow,WithChunkReading,WithBatchIn
     */
     public function model(array $row)
     {
-        try {
-            // Update if existing or create a new user
-            User::updateOrCreate(
-                [
-                    'email' => $row['email'],
-                ],
-                [
-                    'name' => $row['name'],
-                    'password' => Hash::make($row['password']),
-                ]
-            );
-        } catch (\Exception $e) {
-            \log::error('Error al importar usuario: ' . $e->getMessage());
-        }
+        return new SendAttempts([
+
+            'subject'=>$row['subject'],
+            'sponsor'=>$row['sponsor'],
+            'identification_id'=>$row['identification_id'],
+            'phone'=>$row['phone'],
+            'message'=>$row['message'],
+
+         ]);
     }
+
 
      /**
      * Chunk size for processing data in fragments

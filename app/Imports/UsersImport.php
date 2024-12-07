@@ -30,7 +30,7 @@ class UsersImport implements ToModel,WithHeadingRow,WithChunkReading,WithBatchIn
                 ]
             );
         } catch (\Exception $e) {
-            \log::error('Error al importar usuario: ' . $e->getMessage());
+            \log::error('Error importing user: ' . $e->getMessage());
         }
     }
 
