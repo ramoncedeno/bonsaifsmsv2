@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class SendAttempts extends Model implements Auditable
+class SendAttempt extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     protected $table = 'send_attempts';

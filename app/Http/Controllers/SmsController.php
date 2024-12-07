@@ -12,12 +12,4 @@ class SmsController extends Controller
     {
         return view('sms_individual');
     }
-
-    public function indexImport()
-    {
-        return view('sms_import');
-    }
-
-
-
 }

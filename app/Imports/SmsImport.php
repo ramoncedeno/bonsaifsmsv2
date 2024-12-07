@@ -2,14 +2,17 @@
 
 namespace App\Imports;
 
-use App\Models\SendAttempts;
+use App\Models\SendAttempt;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
+
+
 class SmsImport implements ToModel,WithHeadingRow,WithChunkReading,WithBatchInserts
 {
+
     /**
     * @param array $row
     *
@@ -17,7 +20,7 @@ class SmsImport implements ToModel,WithHeadingRow,WithChunkReading,WithBatchInse
     */
     public function model(array $row)
     {
-        return new SendAttempts([
+        return new SendAttempt([
 
             'subject'=>$row['subject'],
             'sponsor'=>$row['sponsor'],
